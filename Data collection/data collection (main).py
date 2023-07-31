@@ -189,7 +189,7 @@ frames = []
 # Set up the variables for the PLC signal monitoring
 flag = False
 counter = 0
-directory = os.path.expanduser(r'C:\Users\GHB\Desktop\Screwcell dataset\Extrinsic data')
+directory = os.path.expanduser(r'C:\Users\45401\Documents\GitHub\ScrewingCell\Extrinsic_data')#(r'C:\Users\GHB\Desktop\Screwcell dataset\Extrinsic data')
 
 # Start the main loop
 while True:
@@ -236,7 +236,7 @@ while True:
             print(elapsed_time)
             print(len(df.index))
             print(df)
-            filename_t = os.path.join(r'C:\Users\GHB\Desktop\Screwcell dataset\Task data', f"t{today}{wood}{counter:03}.csv")
+            filename_t = os.path.join(r'C:\Users\45401\Documents\GitHub\ScrewingCell\Task_data', f"t{today}{wood}{counter:03}.csv")
             df.to_csv(filename_t, index=False)
             
             

@@ -49,13 +49,17 @@ Extrinsic data source provides the audio recording of the screwdriving process i
 
 ## <a id="data-collection"></a>Data collection
 The following code is provided for data collection:
+   But first set your ip address to: 172.20.1.200 
 
 ### <a id="data-collection-main"></a>Data collection (main)
 This code is the main code for connection with the robot and microphone. This script connects to the PLC, reads the registers containing the UR10 robot information, connects to the Azure Kinect DK microphone and uses a strobe signal implemented in the PLC, to start and stop data recording from different data sources. The results are saved as CSV and WAW files for every screw.
 
+Remember to specify absolute path to the extrinsic data folder in the data collection (main).py program 
 ### <a id="data-sorting"></a>Data sorting
 
 This scripts are the main codes for sorting and storing the files after the srewdriving. They include conversion of the intrinsic data from the screwdriver controller from KXML format to CSV format, and provide a labeling system for all files.
+
+
 
 ## <a id="data-processing"></a>Data processing
 The following code is provided for data processing:
