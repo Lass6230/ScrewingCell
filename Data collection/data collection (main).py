@@ -26,7 +26,7 @@ today = datetime.today().strftime('%d%m%Y')
 def PLCsignal(db_number, start_offset, bit_offset):
     reading = client.db_read(db_number, start_offset, 1)
     a = snap7.util.get_bool(reading, 0, bit_offset)
-    print('DB Number: ' + str(db_number) + ' Bit: ' + str(start_offset) + '.' + str(bit_offset) + ' Value: ' + str(a))
+    #print('DB Number: ' + str(db_number) + ' Bit: ' + str(start_offset) + '.' + str(bit_offset) + ' Value: ' + str(a))
     return a
 
 
@@ -133,7 +133,7 @@ class SoundRecorderThread(threading.Thread):
         # Initialize some default parameters for recording audio
         self.frames = []
         self.should_stop = False
-        self.CHUNK = 1024
+        self.CHUNK = 1024 #buffer
         self.FORMAT = pyaudio.paInt16
         self.CHANNELS = 1
         self.RATE = 44100
@@ -201,7 +201,7 @@ while True:
 
     # If the function returns True, set the flag to True and start recording
     if result and not flag:
-        print("Recording started")
+        ##print("Recording started")
         flag = True
         start_time = datetime.now()
         #For recording task data
@@ -231,6 +231,7 @@ while True:
             df[['TCP_rx', 'TCP_ry', 'TCP_rz', 'Robot_I']] = df[['TCP_rx', 'TCP_ry', 'TCP_rz', 'Robot_I']] / 1000
             df = df.rename(columns={'Time': 'Time (ms)', 'TCP_x': 'TCP_x (mm)', 'TCP_y': 'TCP_y (mm)', 'TCP_z': 'TCP_z (mm)', 'TCP_rx': 'TCP_rx (mm)', 'TCP_ry': 'TCP_ry (mm)', 'TCP_rz': 'TCP_rz (mm)', 'Robot_I': 'Robot_I (A)'})
 
+            print("elapsed time: "+str(elapsed_time))
             sf = len(df.index)/int(elapsed_time/1000)
             print("Sampling frequency is:", round(sf),"Hz")
             print(elapsed_time)
